@@ -69,6 +69,9 @@ def main():
 
     handStrList = ["", u"바위", u"가위", u"보"]
 
+    beforeResult = None
+    continueCount = 0
+
     while True:
         print "가위바위보 게임(바위: 1, 가위: 2, 보: 3). 종료는 -1 입력"
 
@@ -95,6 +98,22 @@ def main():
             print "패배!"
         else:
             print "무승부"
+
+        if beforeResult == resultList[0]:
+            continueCount += 1
+        else:
+            beforeResult = resultList[0]
+            continueCount = 1
+
+        if continueCount > 1:
+            if beforeResult == WIN:
+                resultStr = "승"
+            elif beforeResult == LOSE:
+                resultStr = "패"
+            else:
+                resultStr = "무"
+
+            print "%d연%s" % (continueCount, resultStr)
 
         print
 
